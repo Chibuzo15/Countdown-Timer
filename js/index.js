@@ -19,6 +19,11 @@ function start() {
     alert("No value inputted");
     return;
   }
+
+  if (parseInt(inputValue) > 60 * 60 * 24) {
+    alert("Maximum countdown time value is exceeded: 24 hours limit!");
+  }
+
   //
   // parseInt() to convert input value from text type to integer
   const valueInMilliSeconds = parseInt(inputValue) * 1000;
@@ -31,7 +36,7 @@ function start() {
   startInterval();
 
   // start for windwo animation frame
-  window.requestAnimationFrame(runFrame);
+  // window.requestAnimationFrame(runFrame);
 }
 
 function reset() {
@@ -88,7 +93,7 @@ function runInterval() {
   let minutes = 0;
   // if remaining time is above 1 hour , use modulus operator to cap minutes at 60
   if (remainingTimeInSeconds > 60 * 60) {
-    let time = remainingTimeInSeconds % (60 * 60);
+    let time = remainingTimeInSeconds % (60 * 60); // get remainder time in sec
     minutes = Math.floor(time / 60);
   } else {
     // if less than 1 hr then use direct divide by 60
